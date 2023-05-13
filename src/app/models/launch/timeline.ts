@@ -1,0 +1,23 @@
+export interface Timeline {
+    webcast_liftoff: number | null;
+    go_for_prop_loading: number | null;
+    rp1_loading: number | null;
+    stage1_lox_loading: number | null;
+    stage2_lox_loading: number | null;
+    engine_chill: number | null;
+    prelaunch_checks: number | null;
+    propellant_pressurization: number | null;
+    go_for_launch: number | null;
+    ignition: number | null;
+    liftoff: number | null;
+    maxq: number | null;
+    meco: number | null;
+    stage_sep: number | null;
+    second_stage_ignition: number | null;
+    fairing_deploy: number | null;
+    "seco-1": number | null;
+    second_stage_restart: number | null;
+    "seco-2": number | null;
+    payload_deploy_1: number | null;
+    payload_deploy_2: number | null;
+}
