@@ -21,7 +21,7 @@ export class LaunceService {
     return this.httpSvc.get<Launch[]>(this.baseUrl + 'spacex/api/launches/upcoming-launches');
   }
 
-  getLaunchByFlightNumber(flight_number: number): Observable<Launch[]> {
-    return this.httpSvc.get<Launch[]>(this.baseUrl + `spacex/api/launches/past-launches/${flight_number}`);
+  getLaunchByFlightNumber(flight_number: number): Observable<Launch> {
+    return this.httpSvc.get<Launch>(this.baseUrl + `spacex/api/launches/${flight_number}`);
   }
 }

@@ -1,1 +1,37 @@
-<p>launce-details works!</p>
+<div class="table-responsiveness">
+    <div *ngIf="launchDetails; else nocontent">
+        <div>
+            <h3>Launch Details</h3>
+            <table class="launch-table center mt-1">
+                <thead>
+                    <tr class="table-row">
+                        <th>Flight Number</th>
+                        <th>Mission Name</th>
+                        <th>Launch Date</th>
+                        <th>Rocket Name</th>
+                        <th>Rocket Type</th>
+                        <th>Launch Site</th>                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{launchDetails.flight_number}}</td>
+                        <td>{{launchDetails.mission_name}}</td>
+                        <td>{{launchDetails.launch_date_utc | date:'dd/MM/yyyy'}}</td>
+                        <td>{{launchDetails.rocket.rocket_name}}</td>
+                        <td>{{launchDetails.rocket.rocket_type}}</td>
+                        <td>{{launchDetails.launch_site.site_name}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <ng-template #nocontent>
+        <div class="text-align-center mr-5">
+            <span>No launch details is available.</span>
+        </div>
+    </ng-template>
+    <div class="form-group text-center">
+        <button type="button" class="btn btn-primary" [routerLink]="['/launches']">Back</button>
+    </div>
+</div>

@@ -15,6 +15,8 @@ import { PastLauncesComponent } from './launches/past-launces/past-launces.compo
 import { UpcomingLauncesComponent } from './launches/upcoming-launces/upcoming-launces.component';
 import { LaunceDetailsComponent } from './launches/launce-details/launce-details.component';
 import { JwtInterceptor } from './interceptors/jwt-interceptor';
+import { LauncesComponent } from './launches/launces/launces.component';
+import { AllLauncesComponent } from './launches/all-launces/all-launces.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { JwtInterceptor } from './interceptors/jwt-interceptor';
     LoginComponent,
     PastLauncesComponent,
     UpcomingLauncesComponent,
-    LaunceDetailsComponent
+    LaunceDetailsComponent,
+    LauncesComponent,
+    AllLauncesComponent
   ],
   imports: [
     BrowserModule,
