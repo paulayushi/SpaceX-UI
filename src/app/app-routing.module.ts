@@ -14,7 +14,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: 'launches', component: AllLauncesComponent },
-      { path: 'launch-details', component: LaunceDetailsComponent }
+      { path: 'launch-details/:id', component: LaunceDetailsComponent }
     ]
   },
   { path: '**', redirectTo: '', pathMatch: 'full' }];

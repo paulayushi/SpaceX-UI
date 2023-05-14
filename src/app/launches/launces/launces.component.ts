@@ -22,7 +22,7 @@ export class LauncesComponent implements OnInit {
     this.launchSvc.getLaunchByFlightNumber(flight_number).subscribe({
       next: (response: Launch) => {
         this.sharedSvc.setLaunchDetails(response)
-        this.router.navigate(['launch-details']);
+        this.router.navigate(['launch-details', flight_number]);
       },
       error: () => this.toastr.error("Sometime went wrong, please try later.")
     });

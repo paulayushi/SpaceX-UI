@@ -1,7 +1,9 @@
-<h1 class="text-align-center header-top-margin">
-  SpaceX Past and Upcoming Launches
-</h1>
-<div *ngIf="loggedIn()" class="float-right mr-5">
-  <button class="btn btn-success" type="button" (click)="logout()">Logout <i class="fa fa-sign-out"></i></button>
+<div *ngIf="loggedIn()" class="mt-4">
+  <h1 class="text-align-center">
+    SpaceX Past and Upcoming Launches
+  </h1>
+</div>
+<div *ngIf="loggedIn()" class="float-right">
+  <button class="btn btn-success margin-right" type="button" (click)="logout()">Logout <i class="fa fa-sign-out"></i></button>
 </div>
 <router-outlet></router-outlet>

@@ -1,37 +1,124 @@
-<div class="table-responsiveness">
-    <div *ngIf="launchDetails; else nocontent">
-        <div>
-            <h3>Launch Details</h3>
-            <table class="launch-table center mt-1">
-                <thead>
-                    <tr class="table-row">
-                        <th>Flight Number</th>
-                        <th>Mission Name</th>
-                        <th>Launch Date</th>
-                        <th>Rocket Name</th>
-                        <th>Rocket Type</th>
-                        <th>Launch Site</th>                        
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{{launchDetails.flight_number}}</td>
-                        <td>{{launchDetails.mission_name}}</td>
-                        <td>{{launchDetails.launch_date_utc | date:'dd/MM/yyyy'}}</td>
-                        <td>{{launchDetails.rocket.rocket_name}}</td>
-                        <td>{{launchDetails.rocket.rocket_type}}</td>
-                        <td>{{launchDetails.launch_site.site_name}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+<div class="mt-3">
+    <div class="margin-left">
+        <button class="btn btn-primary" type="button" [routerLink]="['/launches']"><i
+                class="fa fa-arrow-left"></i> Back</button>
     </div>
-    <ng-template #nocontent>
-        <div class="text-align-center mr-5">
-            <span>No launch details is available.</span>
+    <div class="table-responsiveness">
+        <h2 class="text-align-center mb-3">Launch Details</h2>
+        <div *ngIf="launchDetails; else nocontent">
+            <div>
+                <table class="launch-table center mt-1">
+                    <thead>
+                        <tr class="table-row">
+                            <th>Flight Number</th>
+                            <th>Mission Name</th>
+                            <th>Details</th>
+                            <th>Launch Date</th>
+                            <th>Launch Window</th>
+                            <th>Launch Success</th>
+                            <th>Launch Date Source</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="table-row">
+                            <td>{{launchDetails.flight_number}}</td>
+                            <td>{{launchDetails.mission_name}}</td>
+                            <td>{{launchDetails.details}}</td>
+                            <td>{{launchDetails.launch_date_utc | date:'dd/MM/yyyy'}}</td>
+                            <td>{{launchDetails.launch_window}}</td>
+                            <td>{{launchDetails.launch_success}}</td>
+                            <td>{{launchDetails.launch_date_source}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="mt-3">
+                <h5 class="margin-left">Rocket:</h5>
+                <table class="launch-table center">
+                    <thead>
+                        <tr class="table-row">
+                            <th>Rocket Id</th>
+                            <th>Rocket Name</th>
+                            <th>Rocket Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="table-row">
+                            <td>{{launchDetails.rocket.rocket_id}}</td>
+                            <td>{{launchDetails.rocket.rocket_name}}</td>
+                            <td>{{launchDetails.rocket.rocket_type}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div *ngIf="launchDetails.rocket.first_stage && launchDetails.rocket.first_stage.cores" class="mt-3">
+                <h5 class="margin-left">First Stage:</h5>
+                <table class="launch-table center">
+                    <thead>
+                        <tr class="table-row">
+                            <th>Core Serial</th>
+                            <th>Reused</th>
+                            <th>Land Success</th>
+                            <th>Landing Type</th>
+                            <th>Landing Vehicle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let core of launchDetails.rocket.first_stage.cores" class="table-row">
+                            <td>{{core.core_serial}}</td>
+                            <td>{{core.reused}}</td>
+                            <td>{{core.land_success}}</td>
+                            <td>{{core.landing_type}}</td>
+                            <td>{{core.landing_vehicle}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div *ngIf="launchDetails.rocket.second_stage && launchDetails.rocket.second_stage.payloads" class="mt-3">
+                <h5 class="margin-left">Second Stage:</h5>
+                <table class="launch-table center">
+                    <thead>
+                        <tr class="table-row">
+                            <th>Manufacturer</th>
+                            <th>Payload Type</th>
+                            <th>Orbit</th>
+                            <th>Cargo Manifest</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let payload of launchDetails.rocket.second_stage.payloads" class="table-row">
+                            <td>{{payload.manufacturer}}</td>
+                            <td>{{payload.payload_type}}</td>
+                            <td>{{payload.orbit}}</td>
+                            <td>{{payload.cargo_manifest}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="mt-3">
+                <h5 class="margin-left">Launch Site:</h5>
+                <table class="launch-table center">
+                    <thead>
+                        <tr class="table-row">
+                            <th>Site Id</th>
+                            <th>Site Name</th>
+                            <th>Site Name Long</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="table-row">
+                            <td>{{launchDetails.launch_site.site_id}}</td>
+                            <td>{{launchDetails.launch_site.site_name}}</td>
+                            <td>{{launchDetails.launch_site.site_name_long}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </ng-template>
-    <div class="form-group text-center">
-        <button type="button" class="btn btn-primary" [routerLink]="['/launches']">Back</button>
+        <ng-template #nocontent>
+            <div class="text-align-center mr-5">
+                <span>No launch details is available.</span>
+            </div>
+        </ng-template>
     </div>
 </div>
