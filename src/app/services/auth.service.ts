@@ -19,7 +19,7 @@ export class AuthService {
     const requestOptions: Object = {
       responseType: 'text'
     }
-    return this.http.post<string>(this.baseUrl + 'spacex/api/auth/login', model, requestOptions).pipe(
+    return this.http.post<string>(this.baseUrl + 'spacex/auth/api/login', model, requestOptions).pipe(
       map((loginToken: string) => {
         if (loginToken) {
           localStorage.setItem('token', loginToken);

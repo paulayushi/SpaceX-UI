@@ -14,14 +14,14 @@ export class LaunceService {
   constructor(private httpSvc: HttpClient) { }
 
   getPastLaunches(): Observable<Launch[]> {
-    return this.httpSvc.get<Launch[]>(this.baseUrl + 'spacex/api/launches/past-launches');
+    return this.httpSvc.get<Launch[]>(this.baseUrl + 'spacex/launches/api/past-launches');
   }
 
   getUpcomingLaunches(): Observable<Launch[]> {
-    return this.httpSvc.get<Launch[]>(this.baseUrl + 'spacex/api/launches/upcoming-launches');
+    return this.httpSvc.get<Launch[]>(this.baseUrl + 'spacex/launches/api/upcoming-launches');
   }
 
   getLaunchByFlightNumber(flight_number: number): Observable<Launch> {
-    return this.httpSvc.get<Launch>(this.baseUrl + `spacex/api/launches/${flight_number}`);
+    return this.httpSvc.get<Launch>(this.baseUrl + `spacex/launches/api/${flight_number}`);
   }
 }
