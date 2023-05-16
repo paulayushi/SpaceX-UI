@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['launches']);
       },
       error: () => this.toastrSvc.error('Please enter your valid credential!'),
-      complete: () => console.info('Login complete')
     });
   }
 }
